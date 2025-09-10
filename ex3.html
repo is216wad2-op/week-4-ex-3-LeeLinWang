@@ -8,8 +8,15 @@
       <p>Get it done today</p>
       
         <!-- add HTML code here -->
+      <form action="#">
+         <input type="text" name="item" id="item" placeholder="enter items">
+         <br>
+         <button onclick="updatelist()">Enter</button>
+         <br>
+         <button onclick="removelist()">Delete</button>
 
-      <ul>
+      </form>
+      <ul id="ul">
          <li>Notebook</li>
          <li>Jello</li>
          <li>Spinach</li>
@@ -19,8 +26,20 @@
       </ul>
       
       <script>
-      
-        // add code here
+         function updatelist(){
+            event.preventDefault();
+            var x = document.getElementById("item").value;
+            var li = document.createElement("li");
+            var text = document.createTextNode(x);
+            li.appendChild(text);
+            var ul = document.getElementById("ul");
+            ul.appendChild(li);
+            document.getElementById("item").value = "";
+         }
+         function removelist(){
+            event.preventDefault();
+            document.getElementById("ul").lastElementChild.remove();
+         }
 
       </script>
  
