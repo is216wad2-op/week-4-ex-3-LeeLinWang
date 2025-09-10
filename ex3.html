@@ -9,7 +9,7 @@
       
         <!-- add HTML code here -->
       <form action="#">
-         <input type="text" name="item" id="item" placeholder="enter items">
+         <input type="text" name="item" id="userinput" placeholder="enter items">
          <br>
          <button onclick="updatelist()">Enter</button>
          <br>
@@ -28,13 +28,16 @@
       <script>
          function updatelist(){
             event.preventDefault();
-            var x = document.getElementById("item").value;
-            var li = document.createElement("li");
-            var text = document.createTextNode(x);
-            li.appendChild(text);
             var ul = document.getElementById("ul");
-            ul.appendChild(li);
-            document.getElementById("item").value = "";
+            var li = document.createElement("li");
+            var input = document.getElementById("userinput");
+            if (input.value.length >0){
+               var textNode = document.createTextNode(input.value);
+               li.appendChild(textNode);
+               ul.appendChild(li);
+               input.value="";
+            }
+            
          }
          function removelist(){
             event.preventDefault();
